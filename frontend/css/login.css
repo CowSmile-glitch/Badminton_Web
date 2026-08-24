@@ -1,0 +1,119 @@
+/* ================= Base Styles ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f4f7f6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* ================= Login Container ================= */
+.login-container {
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 400px;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.login-header h2 {
+    color: #0056b3;
+    font-size: 28px;
+    margin-bottom: 5px;
+}
+
+.login-header p {
+    color: #666666;
+    font-size: 14px;
+}
+
+/* ================= Form Styles ================= */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    color: #333333;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.form-group input[type="email"],
+.form-group input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    font-size: 15px;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+    border-color: #0056b3;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 86, 179, 0.2);
+}
+
+/* ================= Button & Footer ================= */
+.btn-login {
+    width: 100%;
+    padding: 12px;
+    background-color: #0056b3; /* Primary blue for login */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+
+.btn-login:hover {
+    background-color: #004494;
+}
+
+.error-text {
+    color: #dc3545;
+    font-size: 13px;
+    text-align: center;
+    margin-bottom: 10px;
+    display: none; /* Hidden by default */
+}
+
+.login-footer {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 14px;
+}
+
+.login-footer p {
+    margin-bottom: 8px;
+    color: #555555;
+}
+
+.login-footer a {
+    color: #0056b3;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.login-footer a:hover {
+    text-decoration: underline;
+}

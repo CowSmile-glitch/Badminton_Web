@@ -1,0 +1,66 @@
+/* ================= Venue Creation Page ================= */
+body {
+    background: linear-gradient(rgba(4, 28, 50, 0.8), rgba(4, 28, 50, 0.8)), url('../asset/images/badminton1.avif') center/cover fixed !important;
+    min-height: 100vh;
+}
+
+.venue-creation-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 80px);
+    padding: 100px 20px 40px;
+}
+
+.venue-box {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    width: 100%;
+    max-width: 500px;
+}
+
+.venue-box h2 {
+    color: var(--primary-color);
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.venue-box .subtitle {
+    text-align: center;
+    color: #6c757d;
+    margin-bottom: 25px;
+    font-size: 14px;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-family: inherit;
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+}
+
+.half-width {
+    flex: 1;
+}
+
+.msg-success { background-color: #d1e7dd; color: #0f5132; border: 1px solid #badbcc; }
+.msg-error { background-color: #f8d7da; color: #842029; border: 1px solid #f5c2c7; }

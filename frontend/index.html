@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Badminton Court Booking Can Tho</title>
+    <link rel="stylesheet" href="css/index.css?=2">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">
+            <h1>CourtBooker</h1>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="dashboard.html" class="active">Courts</a></li>
+                <li><a href="favorites.html">Favorites</a></li>
+                <li><a href="venues.html">About Us</a></li>
+            </ul>
+        </nav>
+        <div class="nav-buttons" id="nav-auth-section">
+            <a href="login.html" class="btn btn-outline" id="btnLogin">Log In</a>
+            <a href="register.html" class="btn btn-primary" id="btnSignup">Sign Up</a>
+            
+            <div class="user-profile-dropdown" id="userProfile" style="display: none;">
+                <div class="user-info" id="userDropdownBtn">
+                    <img src="" alt="Avatar" id="userAvatar" class="avatar-img">
+                    <span id="userNameDisplay">User Name</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                
+                <div class="dropdown-menu" id="dropdownMenu">
+                    <a href="profile.html"><i class="fa-regular fa-user"></i>My Profile</a>  
+                    <a href="my_venue.html" id="dashboardLink" style="display: none;">My Center</a> 
+                    <a href="#" id="btnLogout" class="text-danger"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a>
+                    
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Find and Book the Best Badminton Courts in Can Tho</h2>
+            <p>Real-time availability, secure booking, and multi-vendor support all in one platform.</p>
+            
+            <div class="search-box">
+                <form id="searchForm" action="#">
+                    <input type="text" id="location" name="location" placeholder="Search by area or venue name...">
+                    <input type="date" id="date" name="date" required>
+                    <button type="submit" class="btn btn-search">Search Courts</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2026 CourtBooker Can Tho. All Rights Reserved.</p>
+    </footer>
+    
+    
+    <script src="js/index.js"></script>
+</body>
+</html>

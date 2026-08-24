@@ -1,0 +1,96 @@
+/* ================= My Venue Profile Page ================= */
+body {
+    background-color: #f4f7f6;
+    padding-top: 80px;
+}
+
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+    color: var(--primary-color);
+}
+
+.loading-container p {
+    margin-top: 15px;
+    font-weight: 600;
+}
+
+.venue-info-container {
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+.venue-card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    overflow: hidden;
+    width: 100%;
+    max-width: 800px;
+}
+
+.venue-image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 350px;
+}
+
+.venue-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.status-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: #28a745;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.venue-details {
+    padding: 40px;
+}
+
+.venue-details h1 {
+    margin: 0 0 10px 0;
+    color: var(--text-dark);
+}
+
+.address {
+    color: #6c757d;
+    font-size: 16px;
+    margin-bottom: 25px;
+}
+
+.address i {
+    color: #dc3545;
+    margin-right: 5px;
+}
+
+.time-box {
+    display: inline-block;
+    background: var(--bg-light);
+    padding: 10px 20px;
+    border-radius: 8px;
+    color: var(--primary-color);
+}
+
+.time-box i {
+    margin-right: 8px;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 15px;
+}

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Profile - CourtBooker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/index.css"> <!-- Load Navbar styles -->
+    <link rel="stylesheet" href="css/profile.css"> <!-- Load Profile specific styles -->
+</head>
+<body>
+    <header class="navbar" id="navbar">
+        <div class="logo">
+            <a href="index.html" style="text-decoration: none;">
+                <i class="fa-solid fa-shuttlecock"></i> CourtBooker
+            </a>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#venues">Find Courts</a></li>
+                <li><a href="favorites.html">Favorites</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="nav-buttons" id="nav-auth-section">
+            <!-- Logged in state (Hidden by default) -->
+            <div class="user-profile-dropdown" id="userProfile" style="display: none;">
+                <div class="user-info" id="userDropdownBtn">
+                    <img src="" alt="Avatar" id="userAvatar" class="avatar-img">
+                    <span id="userNameDisplay">User Name</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                
+                <!-- Dropdown Menu -->
+                <div class="dropdown-menu" id="dropdownMenu">
+                    <a href="profile.html"><i class="fa-regular fa-user"></i>My Profile</a>
+                    <a href="my_venue.html" id="dashboardLink" style="display: none;">My Center</a>
+                    <a href="#" id="btnLogout" class="text-danger"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Place your Navbar HTML here (Copy from index.html) -->
+    
+    <div class="profile-wrapper">
+        <!-- Sidebar Navigation -->
+        <div class="profile-sidebar">
+            <div class="profile-sidebar-avatar text-center">
+                <!-- Ảnh đại diện: Bắt buộc id="profileAvatar" -->
+                <img src="asset/images/" id="profileAvatar" alt="User Avatar" style="width: 150px; height: 150px; object-fit: cover; border-radius: 50%; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                
+                <!-- Thẻ input chọn file: Bắt buộc id="avatarInput" và display: none -->
+                <input type="file" id="avatarInput" accept="image/*" style="display: none;">
+                
+                <!-- Nút bấm: Bắt buộc id="btnChangePhoto" -->
+                <button type="button" id="btnChangePhoto" class="btn btn-light mt-3" style="font-weight: bold; width: 100%;">Change Photo</button>
+            </div>  
+            <ul class="sidebar-menu">
+                <li><a href="profile.html" class="active"><i class="fa-solid fa-user"></i> Personal Info</a></li>
+                <li><a href="change_password.html"><i class="fa-solid fa-lock"></i> Change Password</a></li>
+                <li><a href="#" id="btnLogoutSidebar" class="text-danger"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
+            </ul>
+        </div>
+
+        <!-- Main Content: Personal Info -->
+        <div class="profile-content">
+            <h2>Personal Information</h2>
+            <div id="profileStatus" class="status-msg"></div>
+
+            <form id="profileForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName" name="fullName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address (Read-only)</label>
+                        <input type="email" id="email" name="email" readonly>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="gender">Gender</label>
+                        <select id="gender" name="gender">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Save Changes</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/profile.js"></script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Venue - CourtBooker</title>
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/index.css"> 
+    <link rel="stylesheet" href="css/my_venue.css"> 
+</head>
+<body>
+
+    <!-- UNIVERSAL NAVBAR -->
+    <header class="navbar scrolled" id="navbar">
+        <div class="logo">
+            <a href="index.html" style="text-decoration: none;">
+                <i class="fa-solid fa-shuttlecock"></i> CourtBooker
+            </a>
+        </div>
+        <div class="nav-buttons" id="nav-auth-section">
+            <a href="index.html" class="btn btn-outline">Back to Home</a>
+        </div>
+    </header>
+
+    <!-- LOADING SPINNER -->
+    <div id="loadingSection" class="loading-container">
+        <i class="fa-solid fa-spinner fa-spin fa-3x"></i>
+        <p>Checking your venue details...</p>
+    </div>
+
+    <!-- VENUE INFO SECTION (Hidden by default) -->
+    <div id="venueInfoSection" class="venue-info-container" style="display: none;">
+        <div class="venue-card">
+            <div class="venue-image-wrapper">
+                <img id="vImage" src="" alt="Venue Cover">
+                <span class="status-badge" id="vStatus">ACTIVE</span>
+            </div>
+            
+            <div class="venue-details">
+                <h1 id="vName">Venue Name</h1>
+                <p class="address"><i class="fa-solid fa-location-dot"></i> <span id="vAddress">Address here</span></p>
+                
+                <div class="time-box">
+                    <i class="fa-regular fa-clock"></i> 
+                    <strong>Operating Hours:</strong> 
+                    <span id="vTime">00:00 - 00:00</span>
+                </div>
+
+                <hr style="border: 0; border-top: 1px solid #eee; margin: 25px 0;">
+
+                <div class="action-buttons">
+                    <a href="dashboard.html" class="btn btn-primary" style="text-decoration: none; padding: 12px 25px;">
+                        <i class="fa-solid fa-layer-group"></i> Manage Courts
+                    </a>
+                    <button class="btn btn-outline" style="padding: 12px 25px;">
+                        <i class="fa-solid fa-pen"></i> Edit Profile
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS Files -->
+    <script src="js/script.js"></script>
+    <script src="js/my_venue.js"></script>
+</body>
+</html>

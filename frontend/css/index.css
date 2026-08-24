@@ -1,0 +1,478 @@
+/* Reset basic styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f8f9fa;
+    color: #333333;
+}
+
+/* ================= Navbar Styles ================= */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo h1 {
+    color: #0056b3;
+    font-size: 24px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #555555;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: #0056b3;
+}
+
+/* Buttons */
+.btn {
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s;
+}
+
+.btn-login {
+    background-color: transparent;
+    color: #0056b3;
+    border: 1px solid #0056b3;
+    margin-right: 10px;
+}
+
+.btn-login:hover {
+    background-color: #e6f0fa;
+}
+
+.btn-register {
+    background-color: #0056b3;
+    color: #ffffff;
+}
+
+.btn-register:hover {
+    background-color: #004494;
+}
+
+/* ================= Hero Section Styles ================= */
+.hero {
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* Replaced solid gradient with a background image and a dark overlay for readability */
+    background: linear-gradient(rgba(0, 86, 179, 0.6), rgba(0, 0, 0, 0.7)), 
+            url('../asset/images/badminton1.avif') center/cover no-repeat;
+    
+    color: white;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.hero-content h2 {
+    font-size: 42px;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Added text shadow for extra pop */
+}
+
+.hero-content p {
+    font-size: 18px;
+    margin-bottom: 30px;
+    font-weight: 300;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Search Box */
+.search-box {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.search-box form {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.search-box input {
+    padding: 12px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    font-size: 16px;
+    outline: none;
+}
+
+.search-box input[type="text"] {
+    width: 300px;
+}
+
+.btn-search {
+    background-color: #28a745;
+    color: white;
+    font-size: 16px;
+}
+
+.btn-search:hover {
+    background-color: #218838;
+}
+
+/* ================= Footer Styles ================= */
+.footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333333;
+    color: #ffffff;
+    font-size: 14px;
+}
+/* ================= User Profile Dropdown ================= */
+.user-profile-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    padding: 5px 12px;
+    border-radius: 25px;
+    transition: background-color 0.3s;
+}
+
+.user-info:hover {
+    background-color: #f1f3f5; /* Light gray hover */
+}
+
+.avatar-img {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #333; /* Dark border instead of primary color */
+}
+
+.user-info span {
+    font-weight: 600;
+    color: #333; /* Black text */
+}
+
+.user-info i {
+    color: #333; /* Black icon */
+}
+
+/* ================= Black & White Dropdown Menu ================= */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 120%;
+    right: 0;
+    background-color: #ffffff; /* White background */
+    min-width: 220px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15); /* Stronger shadow for depth */
+    border-radius: 8px;
+    overflow: hidden;
+    z-index: 1001;
+    border: 1px solid #e0e0e0; /* Light gray border */
+}
+
+.dropdown-menu.show {
+    display: block;
+    animation: fadeInDown 0.2s ease-out;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 14px 20px;
+    color: #000000; /* Pure black text */
+    transition: all 0.2s;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.dropdown-menu a:hover {
+    background-color: #f8f9fa; /* Very light gray hover */
+    color: #000000; /* Keep text black */
+    padding-left: 25px; /* Slight indent effect on hover */
+}
+
+.dropdown-menu a i {
+    margin-right: 12px;
+    width: 20px;
+    text-align: center;
+    color: #555555; /* Dark gray icons */
+}
+
+.dropdown-menu hr {
+    border: 0;
+    border-top: 1px solid #eeeeee; /* Very light border */
+    margin: 5px 0;
+}
+
+/* Specific styling for logout to stand out slightly without breaking the B&W theme */
+.dropdown-menu a#btnLogout:hover {
+    background-color: #fff5f5; /* Very subtle red tint */
+    color: #dc3545; /* Red text on hover only */
+}
+
+/* User Avatar & Name Button */
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    padding: 6px 16px 6px 6px; /* Extra padding on right for the arrow */
+    background-color: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
+}
+
+.user-info:hover {
+    background-color: var(--bg-light);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
+}
+
+.avatar-img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--white);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.user-info span {
+    font-weight: 600;
+    color: var(--text-dark);
+    font-size: 15px;
+}
+
+.user-info i {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+/* Dropdown Menu Floating Card */
+.dropdown-menu {
+    display: none; /* Controlled by JavaScript */
+    position: absolute;
+    top: calc(100% + 15px);
+    right: 0;
+    background-color: #ffffff !important; /* Force solid white background */
+    min-width: 220px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    overflow: hidden;
+    z-index: 9999; /* Ensure it floats above the hero section */
+    border: 1px solid #e9ecef;
+}
+
+/* Show class added via JS */
+.dropdown-menu.show {
+    display: block;
+    animation: slideDown 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Menu Items */
+.dropdown-menu a {
+    display: flex;
+    align-items: center;
+    padding: 14px 20px;
+    background-color: #ffffff; /* Force solid white background for links */
+    color: #333333 !important; /* Force dark text color */
+    font-weight: 500;
+    font-size: 15px;
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.dropdown-menu a i {
+    margin-right: 12px;
+    font-size: 16px;
+    color: #007bff; /* Primary blue for icons */
+    width: 20px;
+    text-align: center;
+}
+
+.dropdown-menu a:hover {
+    background-color: #f0f7ff !important; /* Very light blue on hover */
+    color: #007bff !important;
+}
+
+.dropdown-menu hr {
+    border: none;
+    height: 1px;
+    background-color: #e9ecef;
+    margin: 0;
+}
+
+/* Logout Button Special Styling */
+.dropdown-menu a.text-danger {
+    color: #dc3545 !important;
+}
+
+.dropdown-menu a.text-danger i {
+    color: #dc3545 !important;
+}
+
+.dropdown-menu a.text-danger:hover {
+    background-color: #fff5f5 !important; /* Light red background on hover */
+    color: #dc3545 !important;
+}   
+
+/* Show class added via JS */
+.dropdown-menu.show {
+    display: block;
+    animation: slideDown 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Menu Items */
+.dropdown-menu a {
+    display: flex;
+    align-items: center;
+    padding: 14px 20px;
+    color: var(--text-dark);
+    font-weight: 500;
+    font-size: 15px;
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.dropdown-menu a i {
+    margin-right: 12px;
+    font-size: 16px;
+    color: var(--primary-color);
+    width: 20px;
+    text-align: center;
+}
+
+.dropdown-menu a:hover {
+    background-color: #f0f7ff; /* Very light blue */
+    color: var(--primary-color);
+}
+
+.dropdown-menu hr {
+    border: none;
+    height: 1px;
+    background-color: var(--border-color);
+    margin: 4px 0;
+}
+
+/* Logout Button Special Styling */
+.dropdown-menu a.text-danger {
+    color: #dc3545;
+}
+
+.dropdown-menu a.text-danger i {
+    color: #dc3545;
+}
+
+.dropdown-menu a.text-danger:hover {
+    background-color: #fff5f5; /* Light red */
+}
+/* ================= Modal (Popup) Styles ================= */
+.modal-overlay {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 2000; /* Sit on top of everything */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+    backdrop-filter: blur(3px);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    animation: zoomIn 0.3s ease;
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eeeeee;
+    padding-bottom: 10px;
+}
+
+.modal-header h2 {
+    font-size: 18px;
+    color: #333333;
+}
+
+.modal-header i {
+    color: var(--primary-color);
+    margin-right: 8px;
+}
+
+.close-modal {
+    color: #999999;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.close-modal:hover {
+    color: #dc3545; /* Red on hover */
+}
+
+a[href*="profile"], 
+#dashboardLink, 
+#btnLogout {
+    text-align: center !important;
+    display: block !important;
+    width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}

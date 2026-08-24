@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Favorites - CourtBooker</title>
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Reuse the exact same CSS files -->
+    <link rel="stylesheet" href="css/index.css"> 
+    <link rel="stylesheet" href="css/venues_list.css"> 
+</head>
+<body>
+
+    <!-- UNIVERSAL NAVBAR -->
+    <header class="navbar scrolled" id="navbar">
+        <div class="logo">
+            <a href="index.html" style="text-decoration: none;">
+                <i class="fa-solid fa-shuttlecock"></i> CourtBooker
+            </a>
+        </div>
+        <!-- ADDED FAVORITES LINK HERE -->
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="venues.html">Find Courts</a>
+            <a href="favorites.html" class="active">Favorites</a>
+        </div>
+        <div class="nav-buttons" id="nav-auth-section">
+            <a href="index.html" class="btn btn-outline">Back</a>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT SECTION -->
+    <main class="venues-container">
+        <div class="page-header">
+            <h1>My Favorite Centers</h1>
+            <p>Quickly access the badminton courts you love.</p>
+        </div>
+
+        <!-- Grid Container for Favorite Cards -->
+        <div class="venue-grid" id="favoriteGrid">
+            <div class="loading-text text-center" style="grid-column: 1/-1;">
+                <i class="fa-solid fa-spinner fa-spin"></i> Loading your favorites...
+            </div>
+        </div>
+    </main>
+
+    <!-- JavaScript Files -->
+    <script src="js/favorites.js"></script>
+</body>
+</html>

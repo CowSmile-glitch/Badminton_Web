@@ -1,0 +1,148 @@
+/* ================= Base Styles ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f4f7f6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Ensures full viewport height */
+    padding: 40px 20px;
+}
+
+/* ================= Register Container ================= */
+.register-container {
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 500px; /* Slightly wider than login for more inputs */
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.register-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.register-header h2 {
+    color: #0056b3;
+    font-size: 28px;
+    margin-bottom: 5px;
+}
+
+.register-header p {
+    color: #666666;
+    font-size: 14px;
+}
+
+/* ================= Form Styles ================= */
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    color: #333333;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    font-size: 15px;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+    border-color: #0056b3;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 86, 179, 0.2);
+}
+
+/* Role Selection Radio Buttons */
+.role-group {
+    background-color: #f9f9f9;
+    padding: 12px;
+    border-radius: 5px;
+    border: 1px solid #eeeeee;
+}
+
+.radio-options {
+    display: flex;
+    gap: 20px;
+    margin-top: 5px;
+}
+
+.radio-options label {
+    font-weight: normal;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.radio-options input[type="radio"] {
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+/* ================= Button & Footer ================= */
+.btn-register {
+    width: 100%;
+    padding: 12px;
+    background-color: #28a745; /* Green for signup */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+
+.btn-register:hover {
+    background-color: #218838;
+}
+
+.error-text {
+    color: #dc3545;
+    font-size: 13px;
+    text-align: center;
+    margin-bottom: 10px;
+    display: none; /* Hidden by default */
+}
+
+.register-footer {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 14px;
+}
+
+.register-footer p {
+    margin-bottom: 8px;
+    color: #555555;
+}
+
+.register-footer a {
+    color: #0056b3;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.register-footer a:hover {
+    text-decoration: underline;
+}
+

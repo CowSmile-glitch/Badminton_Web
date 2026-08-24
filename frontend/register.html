@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - CourtBooker</title>
+    <link rel="stylesheet" href="css/register.css">
+</head>
+<body>
+    <header class="navbar" id="navbar">
+        <div class="logo">
+            <a href="index.html" style="text-decoration: none;">
+                <i class="fa-solid fa-shuttlecock"></i> CourtBooker
+            </a>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#venues">Find Courts</a></li>
+                <li><a href="index.html#how-it-works">How It Works</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="nav-buttons" id="nav-auth-section">
+            <!-- Default state (Not logged in) -->
+            <a href="login.html" class="btn btn-outline" id="btnLogin">Log In</a>
+            <a href="register.html" class="btn btn-primary" id="btnSignup">Sign Up</a>
+            
+            <!-- Logged in state (Hidden by default) -->
+            <div class="user-profile-dropdown" id="userProfile" style="display: none;">
+                <div class="user-info" id="userDropdownBtn">
+                    <img src="" alt="Avatar" id="userAvatar" class="avatar-img">
+                    <span id="userNameDisplay">User Name</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                
+                <!-- Dropdown Menu -->
+                <div class="dropdown-menu" id="dropdownMenu">
+                    <a href="profile.html"><i class="fa-regular fa-user"></i> My Profile</a>
+                    <a href="dashboard.html" id="dashboardLink" style="display: none;"><i class="fa-solid fa-chart-line"></i> Dashboard</a>
+                    <hr>
+                    <a href="#" id="btnLogout" class="text-danger"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a>
+                </div>
+            </div>
+        </div>
+    </header>   
+
+    <div class="register-container">
+        <div class="register-header">
+            <h2>Create an Account</h2>
+            <p>Join CourtBooker Can Tho today!</p>
+        </div>
+
+        <form id="registerForm">
+            <div class="form-group role-group">
+                <label>I want to register as a:</label>
+                <div class="radio-options">
+                    <label>
+                        <input type="radio" name="role" value="customer" checked>
+                        Player (Customer)
+                    </label>
+                    <label>
+                        <input type="radio" name="role" value="owner">
+                        Court Owner (Vendor)
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" name="fullName" placeholder="e.g., Nguyen Nhut Hao" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="Enter a valid email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="Enter your contact number" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Create a strong password" required minlength="6">
+            </div>
+
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter your password" required>
+            </div>
+
+            <p id="passwordError" class="error-text">Passwords do not match!</p>
+
+            <button type="submit" class="btn-register">Sign Up</button>
+        </form>
+
+        <div class="register-footer">
+            <p>Already have an account? <a href="login.html">Log in here</a></p>
+            <p><a href="index.html">Back to Home</a></p>
+        </div>
+    </div>
+    <script src="js/register.js"></script>
+</body>
+</html>
