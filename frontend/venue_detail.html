@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Court - CourtBooker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="css/index.css">
+    <!-- Matrix Booking CSS -->
+    <link rel="stylesheet" href="css/matrix_booking.css">
+</head>
+<body>
+
+    <!-- NAVBAR (Keep your existing navbar here) -->
+    <header class="navbar scrolled" id="navbar">
+        <div class="logo">
+            <a href="index.html" style="text-decoration: none;">
+                <i class="fa-solid fa-shuttlecock"></i> CourtBooker
+            </a>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="venues.html" class="active">Find Courts</a>
+            <a href="favorites.html">Favorites</a>
+        </div>
+        <div class="nav-buttons" id="nav-auth-section">
+            <a href="venues.html" class="btn btn-outline">Back</a>
+        </div>
+    </header>
+
+    <!-- MAIN BOOKING MATRIX SECTION -->
+    <main class="booking-container" style="max-width: 1200px; margin: 100px auto 40px; padding: 30px; background: #fff; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+        <h2 style="margin-bottom: 10px;">Reserve Your Court</h2>
+        <p style="color: #666; margin-bottom: 25px;">Select a date and click on the available slots to book.</p>
+
+        <div class="matrix-wrapper">
+            <!-- 1. Date Picker -->
+            <div class="date-picker-section" style="margin-bottom: 20px;">
+                <label for="bookingDate" style="font-weight: 600; margin-right: 15px;">Select Date: </label>
+                <input type="date" id="bookingDate" style="padding: 8px 15px; border: 1px solid #ccc; border-radius: 5px;">
+            </div>
+
+            <!-- 2. The Legend Bar -->
+            <div class="schedule-legend">
+                <div class="legend-item"><div class="box box-available"></div> Available</div>
+                <div class="legend-item"><div class="box box-booked"></div> Booked</div>
+                <div class="legend-item"><div class="box box-locked"></div> Locked/Past</div>
+                <div class="legend-item"><div class="box box-selected"></div> Selected</div>
+                <div class="legend-notice">Note: For fixed monthly bookings, please contact the admin.</div>
+            </div>
+
+            <!-- 3. The Scrollable Matrix Table -->
+            <div class="schedule-table-container">
+                <table class="schedule-table" id="scheduleTable">
+                    <tbody><tr><td style="padding: 20px;">Loading schedule...</td></tr></tbody>
+                </table>
+            </div>
+
+           <!-- 4. Checkout Summary -->
+           <div class="booking-summary" style="margin-top: 25px; padding: 20px; background: #f8f9fa; border-radius: 8px; border-left: 4px solid #00c853;">
+            <h4 style="margin-bottom: 15px;">Booking Summary</h4>
+            
+            <ul id="summaryList" style="margin-bottom: 15px; padding-left: 20px; color: #555;">
+                <li>No slots selected</li>
+            </ul>
+            
+            <!-- Added: Total Duration Display -->
+            <div style="font-size: 16px; font-weight: 600; color: #333; margin-bottom: 5px;">
+                Total Duration: <span id="summaryDuration">0 hours</span>
+            </div>
+            
+            <div style="font-size: 18px; font-weight: bold; color: #e53935;">
+                Total Price: <span id="summaryPrice">0</span> VND
+            </div>
+            
+            <button class="btn-confirm" id="btnConfirmBooking" disabled style="width: 100%; padding: 15px; background: #00c853; color: white; border: none; border-radius: 5px; font-weight: bold; font-size: 16px; margin-top: 15px; cursor: pointer; transition: 0.2s;">
+                CONFIRM BOOKING
+            </button>
+        </div>
+        </div>
+    </main>
+
+    <!-- JavaScript Files -->
+    <script src="js/booking.js"></script>
+</body>
+</html>

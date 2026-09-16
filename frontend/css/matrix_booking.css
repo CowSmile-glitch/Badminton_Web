@@ -1,0 +1,73 @@
+/* ================= MATRIX SCHEDULE STYLES ================= */
+.schedule-legend {
+    display: flex;
+    align-items: center;
+    background-color: #006400; /* Dark Green matching reference */
+    color: white;
+    padding: 10px 15px;
+    font-size: 14px;
+    font-weight: 500;
+    flex-wrap: wrap;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.legend-item { display: flex; align-items: center; margin-right: 20px; }
+.legend-item .box { width: 24px; height: 24px; border-radius: 4px; margin-right: 8px; border: 1px solid rgba(0,0,0,0.1); }
+.box-available { background-color: #ffffff; }
+.box-booked { background-color: #ff4d4d; }
+.box-locked { background-color: #a6a6a6; }
+.box-selected { background-color: #007bff; }
+.legend-notice { margin-left: auto; font-size: 13px; color: #ffd700; }
+
+.schedule-table-container {
+    overflow-x: auto; /* Enables horizontal scrolling */
+    max-width: 100%;
+    border: 1px solid #ddd;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    background-color: #f0fdf4; /* Light green tint */
+}
+
+.schedule-table {
+    border-collapse: collapse;
+    width: max-content;
+}
+
+.schedule-table th, .schedule-table td {
+    border: 1px solid #ccc;
+    text-align: center;
+    min-width: 45px;
+    height: 40px;
+    padding: 0;
+    font-size: 12px;
+}
+
+.schedule-table th {
+    background-color: #e0f2f1;
+    color: #333;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+/* Freeze the first column (Court Names) */
+.schedule-table td.court-name, .schedule-table th.court-name {
+    position: sticky;
+    left: 0;
+    background-color: #e8f5e9;
+    font-weight: bold;
+    width: 80px;
+    z-index: 3;
+    border-right: 2px solid #999;
+}
+
+/* Interactive Slots */
+.slot { cursor: pointer; background-color: #fff; transition: 0.1s; }
+.slot:hover:not(.booked):not(.locked) { border: 2px solid #333; opacity: 0.8; }
+.slot.booked { background-color: #ff4d4d; cursor: not-allowed; }
+.slot.locked { background-color: #a6a6a6; cursor: not-allowed; }
+.slot.selected { background-color: #007bff !important; border: 2px solid #0056b3; }
+
+/* Disabled Button State */
+.btn-confirm:disabled { background: #ccc !important; cursor: not-allowed !important; }
