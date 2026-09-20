@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home - Badminton Court Booking Can Tho</title>
     <link rel="stylesheet" href="css/index.css?=2">
@@ -10,14 +11,17 @@
 
     <header class="navbar">
         <div class="logo">
-            <h1>CourtBooker</h1>
+            <a href="index.html" style="text-decoration: none;">
+                <img src="asset/images/logo_system.jpg" alt="CourtBooker Logo" class="navbar-logo"> 
+            </a>
         </div>
         <nav>
             <ul class="nav-links">
                 <li><a href="index.html" class="active">Home</a></li>
                 <li><a href="dashboard.html" class="active">Courts</a></li>
+                <li><a href="venues.html">Find Courts</a></li>
                 <li><a href="favorites.html">Favorites</a></li>
-                <li><a href="venues.html">About Us</a></li>
+                
             </ul>
         </nav>
         <div class="nav-buttons" id="nav-auth-section">
@@ -31,12 +35,35 @@
                     <i class="fa-solid fa-chevron-down"></i>
                 </div>
                 
-                <div class="dropdown-menu" id="dropdownMenu">
-                    <a href="profile.html"><i class="fa-regular fa-user"></i>My Profile</a>  
-                    <a href="my_venue.html" id="dashboardLink" style="display: none;">My Center</a> 
-                    <a href="#" id="btnLogout" class="text-danger"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a>
-                    
-                </div>
+                <!-- User Avatar Dropdown Menu -->
+                    <div class="dropdown-menu" id="userDropdown">
+                        <!-- Profile Link -->
+                        <a href="profile.html" class="dropdown-item">
+                            <i class="fa-regular fa-user"></i>
+                            <span>My Profile</span>
+                        </a>
+                        
+                        <!-- Vendor Center Link -->
+                        <a href="my_venue.html" class="dropdown-item">
+                            <i class="fa-solid fa-house-chimney"></i>
+                            <span>My Center</span>
+                        </a>
+                        
+                        <!-- Booking History Link -->
+                        <a href="my_bookings.html" class="dropdown-item">
+                            <i class="fa-regular fa-calendar-check"></i>
+                            <span>My Bookings</span>
+                        </a>
+                        
+                        <!-- Visual Divider -->
+                        <div class="dropdown-divider"></div>
+                        
+                        <!-- Logout Button -->
+                        <a href="../backend/logout.php" class="dropdown-item logout-btn">
+                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                            <span>Logout</span>
+                        </a>
+                    </div>
             </div>
         </div>
     </header>

@@ -184,228 +184,6 @@ body {
     color: #333; /* Black icon */
 }
 
-/* ================= Black & White Dropdown Menu ================= */
-.dropdown-menu {
-    display: none;
-    position: absolute;
-    top: 120%;
-    right: 0;
-    background-color: #ffffff; /* White background */
-    min-width: 220px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15); /* Stronger shadow for depth */
-    border-radius: 8px;
-    overflow: hidden;
-    z-index: 1001;
-    border: 1px solid #e0e0e0; /* Light gray border */
-}
-
-.dropdown-menu.show {
-    display: block;
-    animation: fadeInDown 0.2s ease-out;
-}
-
-.dropdown-menu a {
-    display: block;
-    padding: 14px 20px;
-    color: #000000; /* Pure black text */
-    transition: all 0.2s;
-    font-size: 15px;
-    font-weight: 500;
-}
-
-.dropdown-menu a:hover {
-    background-color: #f8f9fa; /* Very light gray hover */
-    color: #000000; /* Keep text black */
-    padding-left: 25px; /* Slight indent effect on hover */
-}
-
-.dropdown-menu a i {
-    margin-right: 12px;
-    width: 20px;
-    text-align: center;
-    color: #555555; /* Dark gray icons */
-}
-
-.dropdown-menu hr {
-    border: 0;
-    border-top: 1px solid #eeeeee; /* Very light border */
-    margin: 5px 0;
-}
-
-/* Specific styling for logout to stand out slightly without breaking the B&W theme */
-.dropdown-menu a#btnLogout:hover {
-    background-color: #fff5f5; /* Very subtle red tint */
-    color: #dc3545; /* Red text on hover only */
-}
-
-/* User Avatar & Name Button */
-.user-info {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    cursor: pointer;
-    padding: 6px 16px 6px 6px; /* Extra padding on right for the arrow */
-    background-color: var(--white);
-    border: 1px solid var(--border-color);
-    border-radius: 30px;
-    transition: all 0.3s ease;
-    box-shadow: var(--shadow-sm);
-}
-
-.user-info:hover {
-    background-color: var(--bg-light);
-    box-shadow: var(--shadow-md);
-    transform: translateY(-1px);
-}
-
-.avatar-img {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid var(--white);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.user-info span {
-    font-weight: 600;
-    color: var(--text-dark);
-    font-size: 15px;
-}
-
-.user-info i {
-    font-size: 12px;
-    color: var(--text-muted);
-}
-
-/* Dropdown Menu Floating Card */
-.dropdown-menu {
-    display: none; /* Controlled by JavaScript */
-    position: absolute;
-    top: calc(100% + 15px);
-    right: 0;
-    background-color: #ffffff !important; /* Force solid white background */
-    min-width: 220px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    border-radius: 12px;
-    overflow: hidden;
-    z-index: 9999; /* Ensure it floats above the hero section */
-    border: 1px solid #e9ecef;
-}
-
-/* Show class added via JS */
-.dropdown-menu.show {
-    display: block;
-    animation: slideDown 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-@keyframes slideDown {
-    from { opacity: 0; transform: translateY(-15px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* Menu Items */
-.dropdown-menu a {
-    display: flex;
-    align-items: center;
-    padding: 14px 20px;
-    background-color: #ffffff; /* Force solid white background for links */
-    color: #333333 !important; /* Force dark text color */
-    font-weight: 500;
-    font-size: 15px;
-    text-decoration: none;
-    transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-.dropdown-menu a i {
-    margin-right: 12px;
-    font-size: 16px;
-    color: #007bff; /* Primary blue for icons */
-    width: 20px;
-    text-align: center;
-}
-
-.dropdown-menu a:hover {
-    background-color: #f0f7ff !important; /* Very light blue on hover */
-    color: #007bff !important;
-}
-
-.dropdown-menu hr {
-    border: none;
-    height: 1px;
-    background-color: #e9ecef;
-    margin: 0;
-}
-
-/* Logout Button Special Styling */
-.dropdown-menu a.text-danger {
-    color: #dc3545 !important;
-}
-
-.dropdown-menu a.text-danger i {
-    color: #dc3545 !important;
-}
-
-.dropdown-menu a.text-danger:hover {
-    background-color: #fff5f5 !important; /* Light red background on hover */
-    color: #dc3545 !important;
-}   
-
-/* Show class added via JS */
-.dropdown-menu.show {
-    display: block;
-    animation: slideDown 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-@keyframes slideDown {
-    from { opacity: 0; transform: translateY(-15px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* Menu Items */
-.dropdown-menu a {
-    display: flex;
-    align-items: center;
-    padding: 14px 20px;
-    color: var(--text-dark);
-    font-weight: 500;
-    font-size: 15px;
-    text-decoration: none;
-    transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-.dropdown-menu a i {
-    margin-right: 12px;
-    font-size: 16px;
-    color: var(--primary-color);
-    width: 20px;
-    text-align: center;
-}
-
-.dropdown-menu a:hover {
-    background-color: #f0f7ff; /* Very light blue */
-    color: var(--primary-color);
-}
-
-.dropdown-menu hr {
-    border: none;
-    height: 1px;
-    background-color: var(--border-color);
-    margin: 4px 0;
-}
-
-/* Logout Button Special Styling */
-.dropdown-menu a.text-danger {
-    color: #dc3545;
-}
-
-.dropdown-menu a.text-danger i {
-    color: #dc3545;
-}
-
-.dropdown-menu a.text-danger:hover {
-    background-color: #fff5f5; /* Light red */
-}
 /* ================= Modal (Popup) Styles ================= */
 .modal-overlay {
     display: none; /* Hidden by default */
@@ -467,12 +245,109 @@ body {
     color: #dc3545; /* Red on hover */
 }
 
-a[href*="profile"], 
-#dashboardLink, 
-#btnLogout {
-    text-align: center !important;
-    display: block !important;
-    width: 100% !important;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
+
+/* Styling for the new image logo */
+.navbar .logo a {
+    display: flex;
+    align-items: center; /* Ensures the logo is vertically centered */
+}
+
+.navbar-logo {
+    height: 80px; /* Điều chỉnh chiều cao này cho phù hợp với logo của bạn */
+    width: auto;  /* Giữ nguyên tỷ lệ khung hình của logo */
+    display: block; /* Loại bỏ khoảng trống thừa bên dưới hình ảnh */
+}
+
+/* Tùy chọn: Điều chỉnh kích thước logo trên thiết bị di động */
+@media (max-width: 768px) {
+    .navbar-logo {
+        height: 30px; 
+    }
+}
+
+
+/* ================= USER DROPDOWN COMPONENT ================= */
+.user-profile-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* The Menu Box */
+.dropdown-menu {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    background-color: #ffffff;
+    
+    /* FIX: Force the menu to exactly fit its content */
+    min-width: max-content; 
+    
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    border: 1px solid #ebebeb;
+    display: none; 
+    flex-direction: column;
+    padding: 10px 0;
+    z-index: 1000;
+}
+
+/* This class is injected by the JavaScript click event */
+.dropdown-menu.show {
+    display: flex;
+    animation: slideDown 0.2s ease-out;
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Individual Items */
+.dropdown-menu a {
+    display: flex;
+    align-items: center;
+    
+    /* FIX: Adjust padding for a perfectly balanced box (Top/Bottom 12px, Left/Right 20px) */
+    padding: 12px 20px; 
+    
+    color: #333333 !important;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+/* Fixed width for icons to perfectly align the text */
+.dropdown-menu a i {
+    width: 28px; 
+    font-size: 16px;
+    text-align: left; 
+    color: #666666 !important; 
+    transition: color 0.2s;
+}
+
+.dropdown-menu a:hover {
+    background-color: #f8f9fa !important;
+    color: #007bff !important;
+}
+
+.dropdown-menu a:hover i {
+    color: #007bff !important;
+}
+
+/* Divider line */
+.dropdown-divider {
+    height: 1px;
+    background-color: #f0f0f0;
+    margin: 8px 0;
+}
+
+/* Logout button styling */
+.dropdown-menu a.logout-btn i,
+.dropdown-menu a.logout-btn { 
+    color: #dc3545 !important; 
+}
+
+.dropdown-menu a.logout-btn:hover {
+    background-color: #fff5f5 !important;
 }

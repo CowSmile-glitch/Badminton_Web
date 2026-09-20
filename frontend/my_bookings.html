@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Bookings - CourtBooker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Core CSS and Page CSS -->
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/my_bookings.css">
+</head>
+<body>
+
+    <!-- INCLUDE YOUR NAVBAR HERE -->
+    <header class="navbar scrolled" id="navbar">
+        <div class="logo">
+            <a href="index.html" style="text-decoration: none;">
+                <i class="fa-solid fa-shuttlecock"></i> CourtBooker
+            </a>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="venues.html">Find Courts</a>
+        </div>
+        <div class="nav-buttons">
+            <a href="index.html" class="btn btn-outline">Back</a>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="history-container">
+        <div class="page-header">
+            <h2>My Booking History</h2>
+            <p>Track and manage your badminton court reservations.</p>
+        </div>
+
+        <!-- Dynamic List Container -->
+        <div class="booking-list" id="bookingList">
+            <div class="loading-text text-center" style="padding: 40px; color: #666;">
+                <i class="fa-solid fa-spinner fa-spin"></i> Loading your history...
+            </div>
+        </div>
+    </main>
+
+    <!-- JavaScript Files -->
+    <script src="js/my_bookings.js"></script>
+</body>
+</html>

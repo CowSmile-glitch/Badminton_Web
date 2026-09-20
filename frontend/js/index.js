@@ -54,23 +54,28 @@ document.addEventListener("DOMContentLoaded", function() {
             })
             .catch(error => console.error('Error fetching session data:', error));
 
-        // Dropdown Menu Toggle
-        const userDropdownBtn = document.getElementById('userDropdownBtn');
-        const dropdownMenu = document.getElementById('dropdownMenu');
-        
-        if (userDropdownBtn && dropdownMenu) {
-            userDropdownBtn.addEventListener('click', function(event) {
-                dropdownMenu.classList.toggle('show');
-                event.stopPropagation();
+        // Select the exact IDs from your HTML structure
+        const profileBtn = document.getElementById("userDropdownBtn");
+        const dropdownMenu = document.getElementById("userDropdown");
+
+        if (profileBtn && dropdownMenu) {
+            
+            // 1. Toggle dropdown when clicking the profile button
+            profileBtn.addEventListener("click", function(event) {
+                // Prevent the click from bubbling up to the document
+                event.stopPropagation(); 
+                
+                // Toggle the visibility class
+                dropdownMenu.classList.toggle("show");
             });
 
-            window.addEventListener('click', function(event) {
-                if (!event.target.closest('#userProfile')) {
-                    if (dropdownMenu.classList.contains('show')) {
-                        dropdownMenu.classList.remove('show');
-                    }
+            // 2. Close dropdown automatically when clicking outside
+            document.addEventListener("click", function(event) {
+                if (!profileBtn.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                    dropdownMenu.classList.remove("show");
                 }
             });
+            
         }
 
         // Handle Logout
