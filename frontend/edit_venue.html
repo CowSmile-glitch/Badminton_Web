@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Venue - CourtBooker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="css/index.css">
+    <!-- Inline CSS for the edit page to keep things organized -->
+    <style>
+        .edit-container { max-width: 600px; margin: 100px auto 50px; padding: 0 20px; }
+        .edit-card { background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); border: 1px solid #eaeaea; }
+        .edit-header { display: flex; align-items: center; gap: 15px; margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid #eee; }
+        .btn-back { background: none; border: none; font-size: 18px; color: #555; cursor: pointer; transition: color 0.2s; }
+        .btn-back:hover { color: #007bff; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; font-weight: 600; font-size: 14px; color: #444; margin-bottom: 8px; }
+        .form-control { width: 100%; padding: 12px 15px; border: 1px solid #ddd; border-radius: 8px; font-size: 15px; outline: none; transition: border-color 0.2s; }
+        .form-control:focus { border-color: #007bff; }
+        .time-row { display: flex; gap: 20px; }
+        .time-row .form-group { flex: 1; }
+        .btn-save { width: 100%; padding: 14px; background-color: #007bff; color: white; border: none; border-radius: 8px; font-weight: 700; font-size: 16px; cursor: pointer; transition: background 0.2s; margin-top: 10px; }
+        .btn-save:hover { background-color: #0056b3; }
+        .btn-save:disabled { background-color: #a0cbfc; cursor: not-allowed; }
+    </style>
+</head>
+<body style="background-color: #f8f9fa;">
+
+    <!-- INCLUDE YOUR NAVBAR HERE -->
+
+    <main class="edit-container">
+        <div class="edit-card">
+            
+            <div class="edit-header">
+                <button class="btn-back" onclick="location.href='my_venue.html'" title="Go Back">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </button>
+                <h2 style="font-size: 22px; color: #333; margin: 0;">Edit Venue Profile</h2>
+            </div>
+            <!-- MUST ADD enctype to allow file uploads -->
+            <form id="editVenueForm" enctype="multipart/form-data">
+                
+                <!-- NEW: Image Upload & Preview Section -->
+                <div class="form-group" style="text-align: center; margin-bottom: 25px;">
+                    <label style="text-align: left;">Venue Cover Image</label>
+                    <div style="width: 100%; height: 200px; border-radius: 8px; overflow: hidden; background: #eee; margin-bottom: 10px; border: 1px dashed #ccc;">
+                        <img id="imagePreview" src="../asset/images/logo_system.jpg" alt="Preview" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <!-- The actual file input -->
+                    <input type="file" id="venueImageInput" name="venue_image" accept="image/jpeg, image/png, image/jpg" class="form-control" style="cursor: pointer;">
+                </div>
+
+            <form id="editVenueForm">
+                <div class="form-group">
+                    <label for="editName">Venue Name</label>
+                    <input type="text" id="editName" name="name" required class="form-control" placeholder="Loading...">
+                </div>
+                
+                <div class="form-group">
+                    <label for="editAddress">Full Address</label>
+                    <input type="text" id="editAddress" name="address" required class="form-control" placeholder="Loading...">
+                </div>
+                
+                <div class="time-row">
+                    <div class="form-group">
+                        <label for="editOpenTime">Opening Time</label>
+                        <input type="time" id="editOpenTime" name="opening_time" required class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="editCloseTime">Closing Time</label>
+                        <input type="time" id="editCloseTime" name="closing_time" required class="form-control">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Information</label>
+                    <textarea name="description" id="editDescription" class="form-control" rows="5" placeholder="Enter venue information, facilities, etc."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Terms and Conditions</label>
+                    <textarea name="rules" id="editRules" class="form-control" rows="5" placeholder="Enter booking rules, cancellation policies, etc."></textarea>
+                </div>
+                
+                <button type="submit" class="btn-save" id="btnSaveSubmit">Save Changes</button>
+            </form>
+
+        </div>
+    </main>
+
+    <!-- JavaScript Files -->
+    <script src="js/edit_venue.js"></script>
+</body>
+</html>

@@ -25,11 +25,12 @@ try {
             v.opening_time, 
             v.closing_time, 
             v.cover_image_url, 
+            v.status,
             u.avatar_url AS owner_avatar 
         FROM favorite_venues fv
         JOIN venues v ON fv.venue_id = v.venue_id
         JOIN users u ON v.owner_id = u.user_id
-        WHERE fv.user_id = :user_id AND v.status = 'active'
+        WHERE fv.user_id = :user_id 
         ORDER BY fv.created_at DESC
     ";
     

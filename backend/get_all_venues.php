@@ -20,12 +20,12 @@ try {
             v.opening_time, 
             v.closing_time, 
             v.cover_image_url, 
+            v.status,
             u.avatar_url AS owner_avatar,
             (CASE WHEN fv.venue_id IS NOT NULL THEN 1 ELSE 0 END) AS is_favorited
         FROM venues v
         JOIN users u ON v.owner_id = u.user_id
         LEFT JOIN favorite_venues fv ON v.venue_id = fv.venue_id AND fv.user_id = :user_id
-        WHERE v.status = 'active' 
         ORDER BY v.created_at DESC
     ";
     

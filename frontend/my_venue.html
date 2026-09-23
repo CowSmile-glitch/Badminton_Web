@@ -2,70 +2,180 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Venue - CourtBooker</title>
-    <!-- Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- CSS -->
-    <link rel="stylesheet" href="css/index.css"> 
-    <link rel="stylesheet" href="css/my_venue.css"> 
+    
+    <!-- Core CSS and Page CSS -->
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/my_venue.css">
 </head>
 <body>
-
-    <!-- UNIVERSAL NAVBAR -->
-    <header class="navbar scrolled" id="navbar">
+    <!-- ================= MAIN NAVBAR ================= -->
+    <header class="navbar">
         <div class="logo">
             <a href="index.html" style="text-decoration: none;">
-                <a href="index.html" style="text-decoration: none;">
-                    <img src="asset/images/logo_system.jpg" alt="CourtBooker Logo" class="navbar-logo"> 
-                </a>
+                <img src="asset/images/logo_system.jpg" alt="CourtBooker Logo" class="navbar-logo"> 
             </a>
         </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="dashboard.html" class="active">Courts</a></li>
+                <li><a href="venues.html">Find Courts</a></li>
+                <li><a href="favorites.html">Favorites</a></li>
+                
+            </ul>
+        </nav>
         <div class="nav-buttons" id="nav-auth-section">
-            <a href="index.html" class="btn btn-outline">Back to Home</a>
+            <a href="login.html" class="btn btn-outline" id="btnLogin">Log In</a>
+            <a href="register.html" class="btn btn-primary" id="btnSignup">Sign Up</a>
+            
+            <div class="user-profile-dropdown" id="userProfile" style="display: none;">
+                <div class="user-info" id="userDropdownBtn">
+                    <img src="" alt="Avatar" id="userAvatar" class="avatar-img">
+                    <span id="userNameDisplay">User Name</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                
+                <!-- User Avatar Dropdown Menu -->
+                    <div class="dropdown-menu" id="userDropdown">
+                        <!-- Profile Link -->
+                        <a href="profile.html" class="dropdown-item">
+                            <i class="fa-regular fa-user"></i>
+                            <span>My Profile</span>
+                        </a>
+                        
+                        <!-- Vendor Center Link -->
+                        <a href="my_venue.html" class="dropdown-item">
+                            <i class="fa-solid fa-house-chimney"></i>
+                            <span>My Center</span>
+                        </a>
+                        
+                        <!-- Booking History Link -->
+                        <a href="my_bookings.html" class="dropdown-item">
+                            <i class="fa-regular fa-calendar-check"></i>
+                            <span>My Bookings</span>
+                        </a>
+                        
+                        <!-- Visual Divider -->
+                        <div class="dropdown-divider"></div>
+                        
+                        <!-- Logout Button -->
+                        <a href="../backend/logout.php" class="dropdown-item logout-btn">
+                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                            <span>Logout</span>
+                        </a>
+                    </div>
+            </div>
         </div>
     </header>
+    <!-- ================= END NAVBAR ================= -->
 
-    <!-- LOADING SPINNER -->
-    <div id="loadingSection" class="loading-container">
-        <i class="fa-solid fa-spinner fa-spin fa-3x"></i>
-        <p>Checking your venue details...</p>
-    </div>
+    <!-- INCLUDE YOUR NAVBAR HERE -->
 
-    <!-- VENUE INFO SECTION (Hidden by default) -->
-    <div id="venueInfoSection" class="venue-info-container" style="display: none;">
-        <div class="venue-card">
-            <div class="venue-image-wrapper">
-                <img id="vImage" src="" alt="Venue Cover">
-                <span class="status-badge" id="vStatus">ACTIVE</span>
+    <main class="management-container">
+        <div class="page-header">
+            <h2>Venue Management</h2>
+            <p>Manage your badminton center details and courts.</p>
+        </div>
+
+        <!-- Venue Management Card matching the provided image -->
+        <div class="venue-card" id="venueCard">
+            <!-- Image Section with Active Badge -->
+            <div class="vc-image-container">
+                <img src="../asset/images/badminton1.avif" alt="Venue Image" id="vcImage">
+                <span class="vc-badge active" id="vcBadge">ACTIVE</span>
             </div>
             
-            <div class="venue-details">
-                <h1 id="vName">Venue Name</h1>
-                <p class="address"><i class="fa-solid fa-location-dot"></i> <span id="vAddress">Address here</span></p>
-                
-                <div class="time-box">
-                    <i class="fa-regular fa-clock"></i> 
-                    <strong>Operating Hours:</strong> 
-                    <span id="vTime">00:00 - 00:00</span>
+            <!-- Content Section -->
+            <div class="vc-content">
+                <h3 class="vc-title" id="vcName">An Khanh Sport</h3>
+                <div class="vc-location">
+                    <i class="fa-solid fa-location-dot"></i> 
+                    <span id="vcAddress">3/2 Street, Can Tho</span>
                 </div>
-
-                <hr style="border: 0; border-top: 1px solid #eee; margin: 25px 0;">
-
-                <div class="action-buttons">
-                    <a href="dashboard.html" class="btn btn-primary" style="text-decoration: none; padding: 12px 25px;">
+                <div class="vc-hours">
+                    <i class="fa-regular fa-clock"></i> 
+                    <span class="hours-label">Operating Hours:</span> 
+                    <span id="vcTime">05:00 - 22:00</span>
+                </div>
+                
+                <!-- Action Buttons -->
+                <div class="vc-actions">
+                    <button class="btn-manage-courts" onclick="location.href='dashboard.html'">
                         <i class="fa-solid fa-layer-group"></i> Manage Courts
-                    </a>
-                    <button class="btn btn-outline" style="padding: 12px 25px;">
+                    </button>
+                    <button class="btn-edit-profile" onclick="location.href='edit_venue.html'">
                         <i class="fa-solid fa-pen"></i> Edit Profile
+                    </button>
+                    <button id="btnDeleteVenue" style="background-color: #e53935; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; font-weight: 600; transition: 0.3s; margin-left: 10px;">
+                        <i class="fa-solid fa-trash"></i> Delete
                     </button>
                 </div>
             </div>
         </div>
-    </div>
+        <!-- ================= VENUE DETAILS TABS ================= -->
+        <!-- Hidden by default, will be shown via JS when venue loads -->
+        <div class="venue-details-section" id="venueDetailsSection" style="margin-top: 30px; background: #fff; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); padding: 20px;">
+            
+            <!-- Tab Navigation -->
+            <div class="venue-tabs" style="display: flex; border-bottom: 1px solid #ddd; margin-bottom: 20px; overflow-x: auto;">
+                <button class="tab-btn" onclick="openTab(event, 'tab-info')">Information</button>
+                <button class="tab-btn active" onclick="openTab(event, 'tab-services')">Services</button>
+                <button class="tab-btn" onclick="openTab(event, 'tab-images')">Images</button>
+                <button class="tab-btn" onclick="openTab(event, 'tab-rules')">Terms & Policies</button>
+                <button class="tab-btn" onclick="openTab(event, 'tab-reviews')">Reviews</button>
+            </div>
 
-    <!-- JS Files -->
-    <script src="js/script.js"></script>
+            <!-- Tab Content: Services (Pricing Table) -->
+            <div id="tab-services" class="tab-content" style="display: block;">
+                <h3 class="tab-title" style="color: #00796b; text-transform: uppercase; margin-bottom: 15px; font-size: 18px;">COURT PRICING</h3>
+                <div class="pricing-category" style="text-align: center; font-weight: 700; color: #00796b; font-size: 18px; margin-bottom: 10px;">Badminton</div>
+                
+                <table class="pricing-table" style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+                    <thead>
+                        <tr>
+                            <th colspan="3" style="border: 1px solid #c8d6ce; padding: 12px; background: #f8fbf9; color: #003d2b; font-weight: 600;">Customer</th>
+                        </tr>
+                        <tr>
+                            <th style="border: 1px solid #c8d6ce; padding: 12px; background: #f8fbf9; color: #003d2b; font-weight: 600;">Day</th>
+                            <th style="border: 1px solid #c8d6ce; padding: 12px; background: #f8fbf9; color: #003d2b; font-weight: 600;">Time Frame</th>
+                            <th style="border: 1px solid #c8d6ce; padding: 12px; background: #f8fbf9; color: #003d2b; font-weight: 600;">Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td rowspan="2" style="border: 1px solid #c8d6ce; padding: 12px; text-align: center; vertical-align: middle;">Mon - Sun</td>
+                            <td style="border: 1px solid #c8d6ce; padding: 12px; text-align: center;">07:00 - 17:00</td>
+                            <td style="border: 1px solid #c8d6ce; padding: 12px; text-align: center;">25,000 ₫</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #c8d6ce; padding: 12px; text-align: center;">17:00 - 22:00</td>
+                            <td style="border: 1px solid #c8d6ce; padding: 12px; text-align: center;">50,000 ₫</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Placeholder for other tabs -->
+            <div id="tab-info" class="tab-content" style="display: none;">
+                <h3 class="tab-title" style="color: #00796b; margin-bottom: 15px;">Information</h3>
+                <p>General information about the venue will be displayed here.</p>
+            </div>
+            <div id="tab-membership" class="tab-content" style="display: none;"><p>Membership plans content.</p></div>
+            <div id="tab-images" class="tab-content" style="display: none;"><p>Gallery content.</p></div>
+            <div id="tab-rules" class="tab-content" style="display: none;"><p>Rules and policies content.</p></div>
+            <div id="tab-reviews" class="tab-content" style="display: none;"><p>Customer reviews content.</p></div>
+        </div>
+    </main>
+
+    
+
+    <!-- JavaScript Files -->
+    <script src="js/index.js"></script>
     <script src="js/my_venue.js"></script>
+    
 </body>
 </html>

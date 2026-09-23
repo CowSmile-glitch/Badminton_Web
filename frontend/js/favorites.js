@@ -29,15 +29,19 @@ document.addEventListener("DOMContentLoaded", function() {
                     const closeTime = v.closing_time.substring(0, 5);
                     
                     const coverImg = (v.cover_image_url && v.cover_image_url !== '') 
-                                     ? v.cover_image_url 
-                                     : 'asset/images/badminton1.avif'; 
+                                     ? '../' + v.cover_image_url 
+                                     : '../asset/images/badminton1.avif'; 
                     
                     const logoUrl = (v.owner_avatar && v.owner_avatar !== '') 
                                     ? v.owner_avatar 
                                     : `https://ui-avatars.com/api/?name=${encodeURIComponent(v.name)}&background=e0f2f1&color=00796b&rounded=true&size=100`;
 
-                    // Notice the heart icon is statically rendered as RED (fa-solid) 
-                    // because these are already favorited.
+                    // ================= LOGIC NÚT BOOK NOW / INACTIVE =================
+                    const bookBtn = (v.status === 'active') 
+                        ? `<a href="venue_detail.html?id=${v.venue_id}" class="btn-book">BOOK NOW</a>` 
+                        : `<span class="btn-book" style="background-color: #9e9e9e; cursor: not-allowed; display: inline-block; text-align: center;">INACTIVE</span>`;
+                    // =================================================================
+
                     const cardHTML = `
                         <div class="venue-card" id="card-${v.venue_id}">
                             <div class="venue-img-wrapper">
@@ -48,7 +52,6 @@ document.addEventListener("DOMContentLoaded", function() {
                                 </div>
                                 
                                 <div class="badges-top-right">
-                                    <!-- Heart is red by default -->
                                     <div class="icon-circle btn-remove-favorite" data-id="${v.venue_id}" style="cursor: pointer;" title="Remove from favorites">
                                         <i class="fa-solid fa-heart" style="color: #e53935;"></i>
                                     </div>
@@ -62,7 +65,10 @@ document.addEventListener("DOMContentLoaded", function() {
                                     <div class="v-detail"><i class="fa-solid fa-location-dot"></i> <span>${v.address}</span></div>
                                     <div class="v-detail"><i class="fa-regular fa-clock"></i> <span>${openTime} - ${closeTime}</span></div>
                                 </div>
-                                <a href="venue_detail.html?id=${v.venue_id}" class="btn-book">BOOK NOW</a>
+                                
+                                <!-- SỬ DỤNG BIẾN BOOK BUTTON Ở ĐÂY -->
+                                ${bookBtn}
+                                
                             </div>
                         </div>
                     `;
