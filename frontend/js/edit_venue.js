@@ -40,6 +40,20 @@ document.addEventListener("DOMContentLoaded", function() {
                     if (data.data.image_url) {
                         imagePreview.src = '../' + data.data.image_url;
                     }
+
+                    // ================= 1. MOVED TO THE CORRECT SCOPE =================
+                    const time1 = document.getElementById('editTimeSlot1');
+                    const price1 = document.getElementById('editPrice1');
+                    const time2 = document.getElementById('editTimeSlot2');
+                    const price2 = document.getElementById('editPrice2');
+
+                    // Assign existing pricing data to inputs, fallback to default values if empty
+                    if (time1) time1.value = data.data.time_slot_1 || '07:00 - 17:00';
+                    if (price1) price1.value = data.data.price_1 || '25,000 ₫';
+                    if (time2) time2.value = data.data.time_slot_2 || '17:00 - 22:00';
+                    if (price2) price2.value = data.data.price_2 || '50,000 ₫';
+                    // =================================================================
+                    
                 } else {
                     alert('Error loading venue data: ' + data.message);
                 }
@@ -55,6 +69,19 @@ document.addEventListener("DOMContentLoaded", function() {
             btnSave.disabled = true;
 
             const formData = new FormData(editForm);
+
+            // ================= 2. FORCE APPEND PRICING DATA TO PREVENT ERRORS =================
+            // Fallback in case the pricing inputs are placed outside the <form> tag in HTML
+            const time1 = document.getElementById('editTimeSlot1');
+            const price1 = document.getElementById('editPrice1');
+            const time2 = document.getElementById('editTimeSlot2');
+            const price2 = document.getElementById('editPrice2');
+
+            if (time1 && !formData.has('time_slot_1')) formData.append('time_slot_1', time1.value);
+            if (price1 && !formData.has('price_1')) formData.append('price_1', price1.value);
+            if (time2 && !formData.has('time_slot_2')) formData.append('time_slot_2', time2.value);
+            if (price2 && !formData.has('price_2')) formData.append('price_2', price2.value);
+            // ==================================================================================
 
             fetch('../backend/update_venue.php', {
                 method: 'POST',

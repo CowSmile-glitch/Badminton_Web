@@ -36,16 +36,17 @@ document.addEventListener("DOMContentLoaded", function() {
                                     ? v.owner_avatar 
                                     : `https://ui-avatars.com/api/?name=${encodeURIComponent(v.name)}&background=e0f2f1&color=00796b&rounded=true&size=100`;
 
-                    // ================= LOGIC NÚT BOOK NOW / INACTIVE =================
+                    // ================= BOOK NOW / INACTIVE BUTTON LOGIC =================
                     const bookBtn = (v.status === 'active') 
                         ? `<a href="venue_detail.html?id=${v.venue_id}" class="btn-book">BOOK NOW</a>` 
                         : `<span class="btn-book" style="background-color: #9e9e9e; cursor: not-allowed; display: inline-block; text-align: center;">INACTIVE</span>`;
-                    // =================================================================
+                    // ====================================================================
 
+                    // Added onclick events and pointer cursors to redirect to my_venue profile
                     const cardHTML = `
                         <div class="venue-card" id="card-${v.venue_id}">
                             <div class="venue-img-wrapper">
-                                <img src="${coverImg}" alt="${v.name}">
+                                <img src="${coverImg}" alt="${v.name}" style="cursor: pointer;" onclick="window.location.href='my_venue.html?id=${v.venue_id}'" title="View Venue Profile">
                                 
                                 <div class="badges-top-left">
                                     <span class="badge badge-green"><i class="fa-solid fa-star"></i> Daily</span>
@@ -59,14 +60,14 @@ document.addEventListener("DOMContentLoaded", function() {
                             </div>
                             
                             <div class="venue-info">
-                                <img src="${logoUrl}" alt="Venue Logo" class="venue-logo">
+                                <img src="${logoUrl}" alt="Venue Logo" class="venue-logo" style="cursor: pointer;" onclick="window.location.href='my_venue.html?id=${v.venue_id}'" title="View Venue Profile">
                                 <div class="venue-text">
-                                    <h3>${v.name}</h3>
+                                    <h3 style="cursor: pointer; transition: color 0.2s;" onmouseover="this.style.color='#00796b'" onmouseout="this.style.color='#333'" onclick="window.location.href='my_venue.html?id=${v.venue_id}'">${v.name}</h3>
                                     <div class="v-detail"><i class="fa-solid fa-location-dot"></i> <span>${v.address}</span></div>
                                     <div class="v-detail"><i class="fa-regular fa-clock"></i> <span>${openTime} - ${closeTime}</span></div>
                                 </div>
                                 
-                                <!-- SỬ DỤNG BIẾN BOOK BUTTON Ở ĐÂY -->
+                                <!-- RENDER THE BOOK BUTTON VARIABLE HERE -->
                                 ${bookBtn}
                                 
                             </div>
@@ -87,6 +88,8 @@ document.addEventListener("DOMContentLoaded", function() {
             
             if (removeBtn) {
                 event.preventDefault();
+                event.stopPropagation(); // Prevent triggering any underlying clicks
+                
                 const venueId = removeBtn.getAttribute('data-id');
                 const icon = removeBtn.querySelector('i');
                 const card = document.getElementById(`card-${venueId}`);

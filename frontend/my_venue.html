@@ -85,7 +85,7 @@
         <div class="venue-card" id="venueCard">
             <!-- Image Section with Active Badge -->
             <div class="vc-image-container">
-                <img src="../asset/images/badminton1.avif" alt="Venue Image" id="vcImage">
+                <img src="asset/images/badminton1.avif" alt="Venue Image" id="vcImage">
                 <span class="vc-badge active" id="vcBadge">ACTIVE</span>
             </div>
             
@@ -122,41 +122,15 @@
             
             <!-- Tab Navigation -->
             <div class="venue-tabs" style="display: flex; border-bottom: 1px solid #ddd; margin-bottom: 20px; overflow-x: auto;">
-                <button class="tab-btn" onclick="openTab(event, 'tab-info')">Information</button>
-                <button class="tab-btn active" onclick="openTab(event, 'tab-services')">Services</button>
+                <button class="tab-btn active" onclick="openTab(event, 'tab-info')" id="defaultOpen">Information</button>
+                <button class="tab-btn" onclick="openTab(event, 'tab-services')">Services</button>
                 <button class="tab-btn" onclick="openTab(event, 'tab-images')">Images</button>
                 <button class="tab-btn" onclick="openTab(event, 'tab-rules')">Terms & Policies</button>
                 <button class="tab-btn" onclick="openTab(event, 'tab-reviews')">Reviews</button>
             </div>
-
-            <!-- Tab Content: Services (Pricing Table) -->
-            <div id="tab-services" class="tab-content" style="display: block;">
-                <h3 class="tab-title" style="color: #00796b; text-transform: uppercase; margin-bottom: 15px; font-size: 18px;">COURT PRICING</h3>
-                <div class="pricing-category" style="text-align: center; font-weight: 700; color: #00796b; font-size: 18px; margin-bottom: 10px;">Badminton</div>
+            <!-- Tab Content: Services -->
+            <div id="tab-services" class="tab-content" style="display: none;">
                 
-                <table class="pricing-table" style="width: 100%; border-collapse: collapse; margin-top: 10px;">
-                    <thead>
-                        <tr>
-                            <th colspan="3" style="border: 1px solid #c8d6ce; padding: 12px; background: #f8fbf9; color: #003d2b; font-weight: 600;">Customer</th>
-                        </tr>
-                        <tr>
-                            <th style="border: 1px solid #c8d6ce; padding: 12px; background: #f8fbf9; color: #003d2b; font-weight: 600;">Day</th>
-                            <th style="border: 1px solid #c8d6ce; padding: 12px; background: #f8fbf9; color: #003d2b; font-weight: 600;">Time Frame</th>
-                            <th style="border: 1px solid #c8d6ce; padding: 12px; background: #f8fbf9; color: #003d2b; font-weight: 600;">Price</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td rowspan="2" style="border: 1px solid #c8d6ce; padding: 12px; text-align: center; vertical-align: middle;">Mon - Sun</td>
-                            <td style="border: 1px solid #c8d6ce; padding: 12px; text-align: center;">07:00 - 17:00</td>
-                            <td style="border: 1px solid #c8d6ce; padding: 12px; text-align: center;">25,000 ₫</td>
-                        </tr>
-                        <tr>
-                            <td style="border: 1px solid #c8d6ce; padding: 12px; text-align: center;">17:00 - 22:00</td>
-                            <td style="border: 1px solid #c8d6ce; padding: 12px; text-align: center;">50,000 ₫</td>
-                        </tr>
-                    </tbody>
-                </table>
             </div>
 
             <!-- Placeholder for other tabs -->
@@ -171,6 +145,11 @@
         </div>
     </main>
 
+    <!-- ================= LIGHTBOX MODAL ================= -->
+    <div id="imageLightbox" class="lightbox-modal" onclick="closeLightbox()">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <img class="lightbox-content" id="lightboxImage" onclick="event.stopPropagation()">
+    </div>
     
 
     <!-- JavaScript Files -->

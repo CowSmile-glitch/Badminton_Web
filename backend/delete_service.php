@@ -15,9 +15,8 @@ $address = $_POST['address'] ?? '';
 $openingTime = $_POST['opening_time'] ?? '';
 $closingTime = $_POST['closing_time'] ?? '';
 
-// Check mandatory text fields
 if (empty($name) || empty($address) || empty($openingTime) || empty($closingTime)) {
-    echo json_encode(['status' => 'error', 'message' => 'All mandatory fields are required.']);
+    echo json_encode(['status' => 'error', 'message' => 'All mandatory text fields are required.']);
     exit();
 }
 
@@ -25,31 +24,26 @@ try {
     $db = new DatabaseConnection();
     $conn = $db->getConnection();
 
-    // ================= 1. PRESERVE EXISTING DATA =================
-    // Fetch current data (including new pricing slots) to keep it safe if inputs are empty
+    // 1. LẤY DỮ LIỆU CŨ ĐỂ DỰ PHÒNG NẾU NGƯỜI DÙNG ĐỂ TRỐNG
     $getCurrentQuery = "SELECT description, rules, time_slot_1, price_1, time_slot_2, price_2 FROM venues WHERE owner_id = :user_id";
     $getCurrentStmt = $conn->prepare($getCurrentQuery);
     $getCurrentStmt->execute(['user_id' => $userId]);
     $currentVenue = $getCurrentStmt->fetch(PDO::FETCH_ASSOC);
 
-    // If POST is empty or just spaces, use the old data from database. Otherwise, use new data.
+    // 2. GÁN DỮ LIỆU MỚI HOẶC GIỮ LẠI DỮ LIỆU CŨ
     $description = (!empty(trim($_POST['description'] ?? ''))) ? trim($_POST['description']) : $currentVenue['description'];
     $rules = (!empty(trim($_POST['rules'] ?? ''))) ? trim($_POST['rules']) : $currentVenue['rules'];
     
-    // Fallbacks for Pricing Inputs
     $timeSlot1 = (!empty(trim($_POST['time_slot_1'] ?? ''))) ? trim($_POST['time_slot_1']) : $currentVenue['time_slot_1'];
     $price1 = (!empty(trim($_POST['price_1'] ?? ''))) ? trim($_POST['price_1']) : $currentVenue['price_1'];
     $timeSlot2 = (!empty(trim($_POST['time_slot_2'] ?? ''))) ? trim($_POST['time_slot_2']) : $currentVenue['time_slot_2'];
     $price2 = (!empty(trim($_POST['price_2'] ?? ''))) ? trim($_POST['price_2']) : $currentVenue['price_2'];
 
-    // ================= 2. HANDLE IMAGE UPLOAD =================
+    // 3. XỬ LÝ ẢNH UPLOAD (NẾU CÓ)
     $imageUrl = null;
     if (isset($_FILES['venue_image']) && $_FILES['venue_image']['error'] === UPLOAD_ERR_OK) {
         $uploadDir = '../uploads/venues/';
-        
-        if (!is_dir($uploadDir)) {
-            mkdir($uploadDir, 0777, true);
-        }
+        if (!is_dir($uploadDir)) mkdir($uploadDir, 0777, true);
 
         $fileExtension = pathinfo($_FILES['venue_image']['name'], PATHINFO_EXTENSION);
         $fileName = 'venue_' . $userId . '_' . time() . '.' . $fileExtension;
@@ -60,8 +54,7 @@ try {
         }
     }
 
-    // ================= 3. UPDATE DATABASE =================
-    // Setup shared parameters for both query scenarios
+    // 4. LƯU VÀO DATABASE
     $params = [
         'name' => $name,
         'address' => $address,
@@ -77,35 +70,17 @@ try {
     ];
 
     if ($imageUrl) {
-        // Update all fields INCLUDING the new image
         $query = "UPDATE venues 
-                  SET name = :name, 
-                      address = :address, 
-                      opening_time = :opening_time, 
-                      closing_time = :closing_time, 
-                      cover_image_url = :cover_image_url,
-                      description = :description,
-                      rules = :rules,
-                      time_slot_1 = :time_slot_1,
-                      price_1 = :price_1,
-                      time_slot_2 = :time_slot_2,
-                      price_2 = :price_2
+                  SET name = :name, address = :address, opening_time = :opening_time, closing_time = :closing_time, 
+                      cover_image_url = :cover_image_url, description = :description, rules = :rules,
+                      time_slot_1 = :time_slot_1, price_1 = :price_1, time_slot_2 = :time_slot_2, price_2 = :price_2
                   WHERE owner_id = :user_id";
-                  
-        $params['cover_image_url'] = $imageUrl;
+        $params['cover_image_url'] = $imageUrl; 
     } else {
-        // Update all text and pricing fields ONLY (keep old image)
         $query = "UPDATE venues 
-                  SET name = :name, 
-                      address = :address, 
-                      opening_time = :opening_time, 
-                      closing_time = :closing_time, 
-                      description = :description, 
-                      rules = :rules,
-                      time_slot_1 = :time_slot_1,
-                      price_1 = :price_1,
-                      time_slot_2 = :time_slot_2,
-                      price_2 = :price_2
+                  SET name = :name, address = :address, opening_time = :opening_time, closing_time = :closing_time, 
+                      description = :description, rules = :rules,
+                      time_slot_1 = :time_slot_1, price_1 = :price_1, time_slot_2 = :time_slot_2, price_2 = :price_2
                   WHERE owner_id = :user_id";
     }
 

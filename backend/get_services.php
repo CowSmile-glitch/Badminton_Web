@@ -11,27 +11,27 @@ try {
     $conn = $db->getConnection();
 
     if ($venueId) {
-        // Fetch gallery for a specific venue (Guest View)
-        $query = "SELECT gallery_id, image_url FROM venue_gallery WHERE venue_id = :venue_id ORDER BY created_at DESC";
+        // Fetch services for a specific venue (Guest View)
+        $query = "SELECT id, service_name, price FROM venue_services WHERE venue_id = :venue_id ORDER BY created_at DESC";
         $stmt = $conn->prepare($query);
         $stmt->execute(['venue_id' => $venueId]);
     } else {
-        // Original logic: Fetch gallery for the logged-in vendor
+        // Original logic: Fetch services for the logged-in vendor
         if (!isset($_SESSION['user_id'])) {
             echo json_encode(['status' => 'error', 'message' => 'Unauthorized']);
             exit();
         }
-        $query = "SELECT vg.gallery_id, vg.image_url 
-                  FROM venue_gallery vg
-                  JOIN venues v ON vg.venue_id = v.venue_id
+        $query = "SELECT vs.id, vs.service_name, vs.price 
+                  FROM venue_services vs
+                  JOIN venues v ON vs.venue_id = v.venue_id
                   WHERE v.owner_id = :user_id
-                  ORDER BY vg.created_at DESC";
+                  ORDER BY vs.created_at DESC";
         $stmt = $conn->prepare($query);
         $stmt->execute(['user_id' => $_SESSION['user_id']]);
     }
     
-    $images = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    echo json_encode(['status' => 'success', 'data' => $images]);
+    $services = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    echo json_encode(['status' => 'success', 'data' => $services]);
 
 } catch (PDOException $e) {
     echo json_encode(['status' => 'error', 'message' => 'Database error: ' . $e->getMessage()]);

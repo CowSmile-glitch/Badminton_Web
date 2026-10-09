@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener('DOMContentLoaded', function() {
     
     // ================= 1. NAVBAR DROPDOWN LOGIC =================
     const profileBtn = document.getElementById("userDropdownBtn");
@@ -51,14 +51,16 @@ document.addEventListener("DOMContentLoaded", function() {
                     const heartClass = (v.is_favorited == 1) ? 'fa-solid fa-heart' : 'fa-regular fa-heart';
                     const heartColor = (v.is_favorited == 1) ? 'color: #e53935;' : 'color: #333;';
 
+                    // Book button logic is kept intact, pointing to venue_detail.html
                     const bookBtn = (v.status === 'active') 
                         ? `<a href="venue_detail.html?id=${v.venue_id}" class="btn-book">BOOK NOW</a>` 
                         : `<span class="btn-book" style="background-color: #9e9e9e; cursor: not-allowed; display: inline-block; text-align: center;">INACTIVE</span>`;
 
+                    // Added onclick event and pointer cursor to Cover Image, Logo, and Venue Name to redirect to my_venue profile
                     const cardHTML = `
                         <div class="venue-card">
                             <div class="venue-img-wrapper">
-                                <img src="${coverImg}" alt="${v.name}">
+                                <img src="${coverImg}" alt="${v.name}" style="cursor: pointer;" onclick="window.location.href='my_venue.html?id=${v.venue_id}'" title="View Venue Profile">
                                 
                                 <div class="badges-top-left">
                                     <span class="badge badge-green"><i class="fa-solid fa-star"></i> Daily</span>
@@ -73,9 +75,9 @@ document.addEventListener("DOMContentLoaded", function() {
                             </div>
                             
                             <div class="venue-info">
-                                <img src="${logoUrl}" alt="Venue Logo" class="venue-logo" onerror="this.onerror=null; this.src='asset/images/default_avatar.png';">
+                                <img src="${logoUrl}" alt="Venue Logo" class="venue-logo" style="cursor: pointer;" onclick="window.location.href='my_venue.html?id=${v.venue_id}'" onerror="this.onerror=null; this.src='asset/images/default_avatar.png';">
                                 <div class="venue-text">
-                                    <h3>${v.name}</h3>
+                                    <h3 style="cursor: pointer; transition: color 0.2s;" onmouseover="this.style.color='#00796b'" onmouseout="this.style.color='#333'" onclick="window.location.href='my_venue.html?id=${v.venue_id}'">${v.name}</h3>
                                     <div class="v-detail"><i class="fa-solid fa-location-dot"></i> <span><span class="distance-text">(1.5km)</span> ${v.address}</span></div>
                                     <div class="v-detail"><i class="fa-regular fa-clock"></i> <span>${openTime} - ${closeTime}</span></div>
                                 </div>
@@ -99,6 +101,8 @@ document.addEventListener("DOMContentLoaded", function() {
             
             if (favoriteBtn) {
                 event.preventDefault();
+                event.stopPropagation(); // Prevent triggering other click events when liking a venue
+                
                 const venueId = favoriteBtn.getAttribute('data-id');
                 const icon = favoriteBtn.querySelector('i');
                 
