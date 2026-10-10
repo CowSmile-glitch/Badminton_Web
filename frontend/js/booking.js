@@ -85,7 +85,10 @@ document.addEventListener("DOMContentLoaded", function() {
         html += '</tbody>';
         scheduleTable.innerHTML = html;
 
-        // 5. Attach click events to available slots
+        // Variable to track the last clicked slot for range selection logic
+        let lastClickedSlot = null;
+
+        // 5. Attach click events to available slots with Range Selection logic
         document.querySelectorAll('.slot.available').forEach(cell => {
             cell.addEventListener('click', function() {
                 const courtId = this.dataset.courtId;
@@ -93,19 +96,70 @@ document.addEventListener("DOMContentLoaded", function() {
                 const price = parseFloat(this.dataset.price);
                 const courtName = this.dataset.courtName;
 
-                this.classList.toggle('selected');
+                // Get all slots in the current row to find indices
+                const courtRow = this.closest('tr');
+                const allCourtSlots = Array.from(courtRow.querySelectorAll('td.slot'));
+                const currentIndex = allCourtSlots.indexOf(this);
 
-                if (this.classList.contains('selected')) {
-                    selectedSlots.push({ courtId, courtName, time, price });
+                const isSelecting = !this.classList.contains('selected');
+
+                if (isSelecting) {
+                    // Check if we can perform a range selection (filling the gap between 2 clicks)
+                    if (lastClickedSlot && lastClickedSlot.courtId === courtId && lastClickedSlot.isSelecting) {
+                        const startIdx = Math.min(lastClickedSlot.index, currentIndex);
+                        const endIdx = Math.max(lastClickedSlot.index, currentIndex);
+                        
+                        // Check if there are any booked or locked slots in the middle of the range
+                        let canSelectRange = true;
+                        for (let i = startIdx; i <= endIdx; i++) {
+                            if (allCourtSlots[i].classList.contains('booked') || allCourtSlots[i].classList.contains('locked')) {
+                                canSelectRange = false;
+                                break;
+                            }
+                        }
+
+                        if (canSelectRange) {
+                            // Select all slots in the range automatically
+                            for (let i = startIdx; i <= endIdx; i++) {
+                                const slotCell = allCourtSlots[i];
+                                if (!slotCell.classList.contains('selected')) {
+                                    slotCell.classList.add('selected');
+                                    selectedSlots.push({
+                                        courtId: slotCell.dataset.courtId,
+                                        courtName: slotCell.dataset.courtName,
+                                        time: slotCell.dataset.time,
+                                        price: parseFloat(slotCell.dataset.price)
+                                    });
+                                }
+                            }
+                        } else {
+                            // If range is blocked by booked slots, just select the single clicked slot normally
+                            this.classList.add('selected');
+                            selectedSlots.push({ courtId, courtName, time, price });
+                        }
+                    } else {
+                        // Normal single select (First click)
+                        this.classList.add('selected');
+                        selectedSlots.push({ courtId, courtName, time, price });
+                    }
+                    
+                    // Update last clicked status
+                    lastClickedSlot = { courtId: courtId, index: currentIndex, isSelecting: true };
                 } else {
+                    // Deselecting a slot
+                    this.classList.remove('selected');
                     selectedSlots = selectedSlots.filter(s => !(s.courtId === courtId && s.time === time));
+                    
+                    // Reset range tracking to avoid weird behavior after deselection
+                    lastClickedSlot = { courtId: courtId, index: currentIndex, isSelecting: false };
                 }
+
                 updateSummary();
             });
         });
     }
 
-    // 6. Update the checkout summary UI
+    // 6. Update the checkout summary UI (NEW: GROUPING LOGIC ADDED)
     function updateSummary() {
         let totalPrice = 0;
         summaryList.innerHTML = '';
@@ -118,19 +172,92 @@ document.addEventListener("DOMContentLoaded", function() {
             return;
         }
 
-        // Sort items chronologically
-        selectedSlots.sort((a, b) => a.time.localeCompare(b.time));
-
+        // --- NEW LOGIC: Group continuous time slots ---
+        
+        // Step 1: Group selected slots by courtId (in case user books multiple courts)
+        const courtsMap = {};
         selectedSlots.forEach(slot => {
-            const li = document.createElement('li');
-            li.textContent = `${slot.courtName} - ${slot.time} (${slot.price.toLocaleString('vi-VN')} VND)`;
-            summaryList.appendChild(li);
+            if (!courtsMap[slot.courtId]) {
+                courtsMap[slot.courtId] = { courtName: slot.courtName, slots: [] };
+            }
+            courtsMap[slot.courtId].slots.push(slot);
             totalPrice += slot.price;
         });
 
+        // Helper function to convert "HH:MM" to minutes for easy comparison
+        const getMinutes = (timeStr) => {
+            const [h, m] = timeStr.split(':').map(Number);
+            return h * 60 + m;
+        };
+
+        // Helper function to calculate the end time (adds 30 mins to a slot's start time)
+        const getEndTime = (timeStr) => {
+            const [h, m] = timeStr.split(':').map(Number);
+            let endM = m + 30;
+            let endH = h;
+            if (endM >= 60) {
+                endH += 1;
+                endM -= 60;
+            }
+            return `${endH.toString().padStart(2, '0')}:${endM.toString().padStart(2, '0')}`;
+        };
+
+        // Step 2: Find continuous blocks for each court
+        for (const courtId in courtsMap) {
+            const courtData = courtsMap[courtId];
+            
+            // Sort slots chronologically
+            courtData.slots.sort((a, b) => getMinutes(a.time) - getMinutes(b.time));
+
+            let currentBlock = null;
+
+            courtData.slots.forEach((slot, index) => {
+                const slotMins = getMinutes(slot.time);
+
+                if (!currentBlock) {
+                    // Start a new block
+                    currentBlock = {
+                        startTime: slot.time,
+                        lastSlotTime: slot.time,
+                        price: slot.price
+                    };
+                } else {
+                    const prevMins = getMinutes(currentBlock.lastSlotTime);
+                    // Check if continuous (difference is exactly 30 minutes)
+                    if (slotMins === prevMins + 30) {
+                        currentBlock.lastSlotTime = slot.time;
+                        currentBlock.price += slot.price;
+                    } else {
+                        // Gap detected, render the previous block
+                        const endTime = getEndTime(currentBlock.lastSlotTime);
+                        const li = document.createElement('li');
+                        li.style.marginBottom = "8px"; // add some spacing
+                        li.innerHTML = `<strong>${courtData.courtName}</strong>: ${currentBlock.startTime} - ${endTime} <em>(${currentBlock.price.toLocaleString('vi-VN')} VND)</em>`;
+                        summaryList.appendChild(li);
+
+                        // Start a new block for the current slot
+                        currentBlock = {
+                            startTime: slot.time,
+                            lastSlotTime: slot.time,
+                            price: slot.price
+                        };
+                    }
+                }
+
+                // If it's the last slot in the array, render the final block
+                if (index === courtData.slots.length - 1) {
+                    const endTime = getEndTime(currentBlock.lastSlotTime);
+                    const li = document.createElement('li');
+                    li.style.marginBottom = "8px"; 
+                    li.innerHTML = `<strong>${courtData.courtName}</strong>: ${currentBlock.startTime} - ${endTime} <em>(${currentBlock.price.toLocaleString('vi-VN')} VND)</em>`;
+                    summaryList.appendChild(li);
+                }
+            });
+        }
+        // ----------------------------------------------
+
         // Calculate total hours (Each slot is 30 minutes, or 0.5 hours)
         const totalHours = selectedSlots.length * 0.5;
-        // Formatting grammar (e.g., "1 hour" vs "1.5 hours")
         const hourText = totalHours === 1 ? 'hour' : 'hours';
 
         // Update the DOM

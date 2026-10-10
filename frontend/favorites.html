@@ -15,22 +15,62 @@
 <body>
 
     <!-- UNIVERSAL NAVBAR -->
-    <header class="navbar scrolled" id="navbar">
+    <header class="navbar">
         <div class="logo">
             <a href="index.html" style="text-decoration: none;">
-                <a href="index.html" style="text-decoration: none;">
-                    <img src="asset/images/logo_system.jpg" alt="CourtBooker Logo" class="navbar-logo"> 
-                </a>
+                <img src="asset/images/logo_system.jpg" alt="CourtBooker Logo" class="navbar-logo"> 
             </a>
         </div>
-        <!-- ADDED FAVORITES LINK HERE -->
-        <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="venues.html">Find Courts</a>
-            <a href="favorites.html" class="active">Favorites</a>
-        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="dashboard.html">Courts</a></li>
+                <li><a href="venues.html">Find Courts</a></li>
+                <li><a href="favorites.html" class="active">Favorites</a></li>
+                
+            </ul>
+        </nav>
         <div class="nav-buttons" id="nav-auth-section">
-            <a href="index.html" class="btn btn-outline">Back to home</a>
+            <a href="login.html" class="btn btn-outline" id="btnLogin">Log In</a>
+            <a href="register.html" class="btn btn-primary" id="btnSignup">Sign Up</a>
+            
+            <div class="user-profile-dropdown" id="userProfile" style="display: none;">
+                <div class="user-info" id="userDropdownBtn">
+                    <img src="" alt="Avatar" id="userAvatar" class="avatar-img">
+                    <span id="userNameDisplay">User Name</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                
+                <!-- User Avatar Dropdown Menu -->
+                    <div class="dropdown-menu" id="userDropdown">
+                        <!-- Profile Link -->
+                        <a href="profile.html" class="dropdown-item">
+                            <i class="fa-regular fa-user"></i>
+                            <span>My Profile</span>
+                        </a>
+                        
+                        <!-- Vendor Center Link -->
+                        <a href="my_venue.html" class="dropdown-item">
+                            <i class="fa-solid fa-house-chimney"></i>
+                            <span>My Center</span>
+                        </a>
+                        
+                        <!-- Booking History Link -->
+                        <a href="my_bookings.html" class="dropdown-item">
+                            <i class="fa-regular fa-calendar-check"></i>
+                            <span>My Bookings</span>
+                        </a>
+                        
+                        <!-- Visual Divider -->
+                        <div class="dropdown-divider"></div>
+                        
+                        <!-- Logout Button -->
+                        <a href="../backend/logout.php" class="dropdown-item logout-btn">
+                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                            <span>Logout</span>
+                        </a>
+                    </div>
+            </div>
         </div>
     </header>
 
@@ -50,6 +90,7 @@
     </main>
 
     <!-- JavaScript Files -->
+     <script src="js/index.js"></script>
     <script src="js/favorites.js"></script>
 </body>
 </html>

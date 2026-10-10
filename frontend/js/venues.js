@@ -1,24 +1,27 @@
 document.addEventListener('DOMContentLoaded', function() {
     
-    // ================= 1. NAVBAR DROPDOWN LOGIC =================
-    const profileBtn = document.getElementById("userDropdownBtn");
-    const dropdownMenu = document.getElementById("userDropdown");
+    // ================= 1. NAVBAR DROPDOWN LOGIC (FIXED WITH EVENT DELEGATION) =================
+    document.addEventListener("click", function(event) {
+        // Find if the user clicked on the profile button or inside it
+        const profileBtn = event.target.closest("#userDropdownBtn");
+        const dropdownMenu = document.getElementById("userDropdown");
 
-    if (profileBtn && dropdownMenu) {
-        profileBtn.addEventListener("click", function(event) {
+        // Toggle menu when clicking the profile button
+        if (profileBtn && dropdownMenu) {
             event.stopPropagation(); 
             dropdownMenu.classList.toggle("show");
             profileBtn.classList.toggle("active"); 
-        });
-
-        document.addEventListener("click", function(event) {
-            if (!profileBtn.contains(event.target) && !dropdownMenu.contains(event.target)) {
+        } 
+        // Close menu when clicking outside of it
+        else if (dropdownMenu && dropdownMenu.classList.contains("show")) {
+            const btn = document.getElementById("userDropdownBtn");
+            if (btn && !btn.contains(event.target) && !dropdownMenu.contains(event.target)) {
                 dropdownMenu.classList.remove("show");
-                profileBtn.classList.remove("active");
+                btn.classList.remove("active");
             }
-        });
-    }
-    // ============================================================
+        }
+    });
+    // ==========================================================================================
 
     // ================= 2. VENUE GRID LOGIC ======================
     const venueGrid = document.getElementById('venueGrid');
@@ -29,6 +32,14 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(data => {
             if (data.status === 'success') {
                 const venues = data.data;
+
+                // Sort array: 'active' venues come first, 'inactive' venues go to the bottom
+                venues.sort((a, b) => {
+                    if (a.status === 'active' && b.status !== 'active') return -1;
+                    if (a.status !== 'active' && b.status === 'active') return 1;
+                    return 0; 
+                });
+
                 venueGrid.innerHTML = ''; 
 
                 if (venues.length === 0) {

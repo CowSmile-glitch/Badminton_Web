@@ -17,8 +17,8 @@
         </div>
         <nav>
             <ul class="nav-links">
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="dashboard.html" class="active">Courts</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="dashboard.html">Courts</a></li>
                 <li><a href="venues.html">Find Courts</a></li>
                 <li><a href="favorites.html">Favorites</a></li>
                 
@@ -73,20 +73,23 @@
     <div class="profile-wrapper">
         <!-- Sidebar Navigation -->
         <div class="profile-sidebar">
-            <div class="profile-sidebar-avatar text-center">
+            <div class="profile-sidebar-avatar" style="display: flex; flex-direction: column; align-items: center; padding: 25px 15px 20px 15px; border-bottom: 1px solid #eaeaea; margin-bottom: 10px;">
               
-                <img src="asset/images/" id="profileAvatar" alt="User Avatar" style="width: 150px; height: 150px; object-fit: cover; border-radius: 50%; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
                 
-            
+                <img src="asset/images/" id="profileAvatar" alt="User Avatar" style="width: 140px; height: 140px; object-fit: cover; border-radius: 50%; box-shadow: 0 6px 15px rgba(0,0,0,0.12); border: 4px solid #ffffff; margin-bottom: 18px; background-color: #fff;">
+                
                 <input type="file" id="avatarInput" accept="image/*" style="display: none;">
                 
-
-                <button type="button" id="btnChangePhoto" class="btn btn-light mt-3" style="font-weight: bold; width: 100%;">Change Photo</button>
+               
+                <button type="button" id="btnChangePhoto" style="font-weight: 600; width: 85%; padding: 9px 15px; border-radius: 25px; border: 1px solid #dcdcdc; background-color: #ffffff; color: #444; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.05); display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 14px;">
+                    <i class="fa-solid fa-camera" style="color: #666;"></i> Change Photo
+                </button>
             </div>  
             <ul class="sidebar-menu">
                 <li><a href="profile.html" class="active"><i class="fa-solid fa-user"></i> Personal Info</a></li>
                 <li><a href="change_password.html"><i class="fa-solid fa-lock"></i> Change Password</a></li>
-                <li><a href="#" id="btnLogoutSidebar" class="text-danger"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
+                <li><a href="terms.html"><i class="fa-solid fa-file-contract"></i> User Agreement</a></li>
+                
             </ul>
         </div>
 

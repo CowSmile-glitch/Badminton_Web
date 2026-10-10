@@ -18,7 +18,7 @@ $conn = $db->getConnection();
 
 try {
     // Prepare SQL statement to fetch user details
-    $sql = "SELECT full_name, email, phone_number as phone_number, gender, avatar_url FROM users WHERE user_id = :user_id";
+    $sql = "SELECT full_name, email, phone_number as phone, gender, avatar_url FROM users WHERE user_id = :user_id";
     $stmt = $conn->prepare($sql);
     $stmt->execute(['user_id' => $userId]);
     

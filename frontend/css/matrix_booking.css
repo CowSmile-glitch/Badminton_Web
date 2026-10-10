@@ -31,13 +31,13 @@
 
 .schedule-table {
     border-collapse: collapse;
-    width: max-content;
+    width: 100%; 
 }
 
 .schedule-table th, .schedule-table td {
     border: 1px solid #ccc;
     text-align: center;
-    min-width: 45px;
+    min-width: 25px; 
     height: 40px;
     padding: 0;
     font-size: 12px;

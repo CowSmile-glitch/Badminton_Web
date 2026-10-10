@@ -3,16 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Find Venues - CourtBooker</title>
-    <!-- Fonts & Icons -->
+    <title>User Agreement - CourtBooker</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Core & Page CSS -->
-    <link rel="stylesheet" href="css/index.css"> 
-    <link rel="stylesheet" href="css/venues_list.css"> 
+    <!-- Link shared CSS and newly separated CSS file -->
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/terms.css">
 </head>
-<body>
+<body class="terms-body-bg">
 
     <!-- UNIVERSAL NAVBAR -->
     <header class="navbar">
@@ -25,7 +24,7 @@
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="dashboard.html">Courts</a></li>
-                <li><a href="venues.html" class="active">Find Courts</a></li>
+                <li><a href="venues.html">Find Courts</a></li>
                 <li><a href="favorites.html">Favorites</a></li>
             </ul>
         </nav>
@@ -73,24 +72,47 @@
         </div>
     </header>
 
-    <!-- MAIN CONTENT SECTION -->
-    <main class="venues-container">
-        <div class="page-header">
-            <h1>Explore Badminton Centers</h1>
-            <p>Find and book the best badminton courts near you</p>
-        </div>
-
-        <!-- Grid Container for Venue Cards -->
-        <div class="venue-grid" id="venueGrid">
-            <!-- Data will be dynamically rendered here by JavaScript -->
-            <div class="loading-text text-center" style="grid-column: 1/-1;">
-                <i class="fa-solid fa-spinner fa-spin"></i> Loading venues...
+    <!-- MAIN CONTENT -->
+    <main class="terms-main-container">
+        
+        <!-- Main wrapper box -->
+        <div class="terms-box">
+            
+            <!-- Left column: Sidebar Menu -->
+            <div class="terms-sidebar">
+                <ul class="terms-sidebar-menu">
+                    <li><a href="profile.html"><i class="fa-solid fa-user"></i> Personal Info</a></li>
+                    <li><a href="change_password.html"><i class="fa-solid fa-lock"></i> Change Password</a></li>
+                    <li><a href="terms.html" class="active"><i class="fa-solid fa-file-contract"></i> User Agreement</a></li>
+                    
+                </ul>
             </div>
+
+            <!-- Right column: Terms Content -->
+            <div class="terms-content">
+                <h2>User Agreement</h2>
+                <p class="subtitle">Terms of Service and Policies</p>
+
+                <div id="termsStatus" class="terms-status-msg" style="display: none;"></div>
+
+                <form id="termsForm">
+                    <div class="terms-form-group">
+                        <!-- Text display box -->
+                        <textarea id="termsText" name="terms_content" rows="14" class="terms-textarea" readonly>Loading terms...</textarea>
+                    </div>
+
+                    <!-- Save button (Displayed by JS if user is Admin) -->
+                    <button type="submit" id="btnSaveTerms" class="terms-btn-save" style="display: none;">
+                        <i class="fa-solid fa-save"></i> Update Terms (Admin Only)
+                    </button>
+                </form>
+            </div>
+            
         </div>
     </main>
 
     <!-- JavaScript Files -->
-     <script src="js/index.js"></script>
-    <script src="js/venues.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/terms.js"></script>
 </body>
 </html>

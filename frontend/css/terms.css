@@ -1,0 +1,129 @@
+/* ================= TERMS OF SERVICE STYLES ================= */
+
+/* General background image setup for the page */
+.terms-body-bg {
+    background: linear-gradient(rgba(4, 28, 50, 0.7), rgba(4, 28, 50, 0.7)), url('../asset/images/badminton1.avif') center/cover fixed;
+}
+
+/* Center-aligned main container */
+.terms-main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 80px);
+    padding: 40px 20px;
+}
+
+/* Rounded gray box containing content (Card) */
+.terms-box {
+    display: flex;
+    width: 100%;
+    max-width: 950px;
+    background-color: #dfe3e6;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    overflow: hidden;
+}
+
+/* ================= LEFT COLUMN: SIDEBAR MENU ================= */
+.terms-sidebar {
+    width: 280px;
+    padding: 30px 0;
+    border-right: 1px solid #c9ced4;
+}
+
+.terms-sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.terms-sidebar-menu a {
+    display: block;
+    padding: 15px 25px;
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.terms-sidebar-menu a i {
+    width: 25px;
+}
+
+/* Active menu state */
+.terms-sidebar-menu a.active {
+    font-weight: 600;
+    background-color: #ecf0f3;
+    border-left: 4px solid #0056b3;
+}
+
+.terms-sidebar-menu a.active i {
+    color: #0056b3;
+}
+
+/* Logout button */
+.terms-sidebar-menu a.logout-link {
+    color: #dc3545;
+    margin-top: 20px;
+}
+
+/* ================= RIGHT COLUMN: TERMS CONTENT ================= */
+.terms-content {
+    flex: 1;
+    padding: 40px 50px;
+}
+
+.terms-content h2 {
+    color: #333;
+    margin-bottom: 5px;
+    font-size: 24px;
+}
+
+.terms-content .subtitle {
+    color: #666;
+    margin-bottom: 25px;
+    font-size: 15px;
+}
+
+/* Save status message */
+.terms-status-msg {
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+/* Textarea section */
+.terms-form-group {
+    margin-bottom: 20px;
+}
+
+.terms-textarea {
+    width: 100%;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    resize: vertical;
+    background-color: #ffffff;
+    color: #333;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* Save button (Visible for Admin only) */
+.terms-btn-save {
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 15px;
+    transition: 0.2s;
+}
+
+.terms-btn-save:hover {
+    background-color: #004494;
+}
